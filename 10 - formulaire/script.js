@@ -27,9 +27,15 @@ form.addEventListener("submit", onLogin);
 function onLogin(event) {
     event.preventDefault();
 
-    let length = prenom.length
-    console.log(length)
-
+    prenom.value.length <= 2 || prenom.value.length >= 20 ? prenom.nextElementSibling.classList.remove("invisible") : prenom.nextElementSibling.classList.add("invisible");
+    nom.value.length <= 2 || prenom.value.length >= 20  ? nom.nextElementSibling.classList.remove("invisible") : nom.nextElementSibling.classList.add("invisible");
+    message.value.length <= 10 || prenom.value.length >= 100  ? message.nextElementSibling.classList.remove("invisible") : message.nextElementSibling.classList.add("invisible");
+    
+    if (isValidEmail(email.value) == false) {
+        email.nextElementSibling.classList.remove("invisible");
+    }else{
+        email.nextElementSibling.classList.add("invisible");
+    }
     const data = {
         prenom: prenom.value,
         nom: nom.value,
